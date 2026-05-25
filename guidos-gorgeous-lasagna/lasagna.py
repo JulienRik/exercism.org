@@ -7,12 +7,13 @@ This is a module docstring, used to describe the functionality
 of a module and its functions and/or classes.
 """
 
+# TODO (student): define your EXPECTED_BAKE_TIME (required) and PREPARATION_TIME (optional) constants below.
+EXPECTED_BAKE_TIME = 30
+PREPARATION_TIME = 10
 
-#TODO (student): define your EXPECTED_BAKE_TIME (required) and PREPARATION_TIME (optional) constants below.
 
-
-#TODO (student): Remove 'pass' and complete the 'bake_time_remaining()' function below.
-def bake_time_remaining():
+# TODO (student): Remove 'pass' and complete the 'bake_time_remaining()' function below.
+def bake_time_remaining(elapsed_bake_time):
     """Calculate the bake time remaining.
 
     Parameters:
@@ -25,19 +26,20 @@ def bake_time_remaining():
     an argument and returns how many minutes the lasagna still needs to bake
     based on the `EXPECTED_BAKE_TIME`.
     """
+    return EXPECTED_BAKE_TIME - elapsed_bake_time
 
-    pass
 
-
-#TODO (student): Define the 'preparation_time_in_minutes()' function below.
+# TODO (student): Define the 'preparation_time_in_minutes()' function below.
 # To avoid the use of magic numbers (see: https://en.wikipedia.org/wiki/Magic_number_(programming)), you should define a PREPARATION_TIME constant.
 # You can do that on the line below the 'EXPECTED_BAKE_TIME' constant.
 # This will make it easier to do calculations, and make changes to your code.
+def preparation_time_in_minutes(number_of_layers):
+    return number_of_layers * 2
 
 
-
-#TODO (student): define the 'elapsed_time_in_minutes()' function below.
-
+# TODO (student): define the 'elapsed_time_in_minutes()' function below.
+def elapsed_time_in_minutes(number_of_layers, elapsed_bake_time):
+    return number_of_layers + elapsed_bake_time
 
 
 # TODO (student): Remember to go back and add docstrings to all your functions
