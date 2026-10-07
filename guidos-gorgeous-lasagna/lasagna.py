@@ -11,7 +11,7 @@ EXPECTED_BAKE_TIME = 40
 PREPARATION_TIME = 2
 
 
-def bake_time_remaining(elapsed_bake_time) :
+def bake_time_remaining(n):
     """Calculate the bake time remaining.
 
     Parameters:
@@ -21,11 +21,11 @@ def bake_time_remaining(elapsed_bake_time) :
         int: The remaining bake time (in minutes) derived from 'EXPECTED_BAKE_TIME'.
 
     Function that takes the actual minutes the lasagna has been in the oven as
-    an argument and returns how many minutes the lasagna still needs to bake
+    an argument n and returns how many minutes the lasagna still needs to bake
     based on the `EXPECTED_BAKE_TIME`.
     """
-     == EXPECTED_BAKE_TIME - elapsed_bake_time
-
+    total = EXPECTED_BAKE_TIME - n
+    return total
 
 
 def preparation_time_in_minutes(number_of_layers):
@@ -37,13 +37,10 @@ def preparation_time_in_minutes(number_of_layers):
     Returns:
         int: The total preparation time (in minutes) derived from 'PREPARATION_TIME' per 'number_of_layers'.
 
-    Function that takes the actual minutes the lasagna has been in the oven as
-    an argument and returns how many minutes the lasagna still needs to bake
-    based on the `EXPECTED_BAKE_TIME`.
-
     Function that takes the 'number_of_layers' and returns the 'PREPARATION_TIME' in total.
     """
-    return number_of_layers * 2
+    prep_time = number_of_layers * PREPARATION_TIME
+    return prep_time
 
 
 def elapsed_time_in_minutes(number_of_layers, elapsed_bake_time):
@@ -55,12 +52,6 @@ def elapsed_time_in_minutes(number_of_layers, elapsed_bake_time):
     Returns:
         int: The remaining bake time (in minutes) derived from 'EXPECTED_BAKE_TIME'.
 
-    Function that takes the actual minutes the lasagna has been in the oven as
-    an argument and returns how many minutes the lasagna still needs to bake
-    based on the `EXPECTED_BAKE_TIME`.
+    Function takes the result of preparation_time_in_minutes and elapsed_bake_time as argument and returns elapsed_time_in_minutes as result.
     """
-    return number_of_layers + elapsed_bake_time
-
-
-def raise_to_power(number, power):
-    return number ** power
+    return preparation_time_in_minutes(number_of_layers) + elapsed_bake_time
