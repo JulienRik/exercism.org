@@ -6,7 +6,6 @@ Overview of exchanging currency when travelling: https://www.compareremit.com/mo
 """
 
 
-
 def exchange_money(budget, exchange_rate):
     """Calculate estimated value after exchange.
 
@@ -27,8 +26,7 @@ def exchange_money(budget, exchange_rate):
     This function calculates and returns the (estimated) value of the exchanged currency.
 
     """
-
-    pass
+    return budget / exchange_rate
 
 
 def get_change(budget, exchanging_value):
@@ -52,8 +50,7 @@ def get_change(budget, exchanging_value):
     after an exchange.
 
     """
-
-    pass
+    return budget - exchanging_value
 
 
 def get_value_of_bills(denomination, number_of_bills):
@@ -76,8 +73,7 @@ def get_value_of_bills(denomination, number_of_bills):
     This function calculates and returns the total value of the bills (excluding fractional amounts).
 
     """
-
-    pass
+    return int(denomination * number_of_bills)
 
 
 def get_number_of_bills(amount, denomination):
@@ -101,8 +97,7 @@ def get_number_of_bills(amount, denomination):
     be obtained from the given amount. Whole bills only - no fractional amounts.
 
     """
-
-    pass
+    return amount // denomination
 
 
 def get_leftover_of_bills(amount, denomination):
@@ -126,8 +121,10 @@ def get_leftover_of_bills(amount, denomination):
     returned from starting amount, due to the currency denomination.
 
     """
-
-    pass
+    count_bills = int(amount / denomination)
+    total_value_bills = count_bills * denomination
+    leftover = amount - total_value_bills
+    return leftover
 
 
 def exchangeable_value(budget, exchange_rate, spread, denomination):
@@ -155,5 +152,15 @@ def exchangeable_value(budget, exchange_rate, spread, denomination):
     This function calculates and returns the maximum value of the new currency after
     determining the exchange rate plus the spread.
     """
+    # actual rate calc
+    spread_decimal = spread / 100
+    actual_rate = exchange_rate * (1 + spread_decimal)
 
-    pass
+    # How much at all
+    foreign_currency = budget / actual_rate
+
+    # value
+    number_of_bills = foreign_currency // denomination
+    max_value = number_of_bills * denomination
+
+    return max_value
